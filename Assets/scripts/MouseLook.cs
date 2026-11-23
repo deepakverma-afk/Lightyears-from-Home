@@ -5,6 +5,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] private Transform playerBody;
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private float mouseSensitivity = 100f;
+    [SerializeField] private float smoothTime = 0.05f;
+    private Vector2 currentMouseDelta;
+    private Vector2 currentMouseDeltaVelocity;
     private float xRotation = 0f;
     private float mouseX;
     private float mouseY;
@@ -20,8 +23,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        mouseX = Mouse.current.delta.x.ReadValue() * mouseSensitivity * Time.deltaTime;
-        mouseY = Mouse.current.delta.y.ReadValue() * mouseSensitivity * Time.deltaTime;
+        Vector2 targetMouseDelta = Mouse.current.delta.ReadValue();
+        currentMouseDelta = Vector2.SmoothDamp(
+            currentMouseDelta,
+            targetMouseDelta,
+            ref currentMouseDeltaVelocity,
+            smoothTime
+            );
+        mouseX = currentMouseDelta.x * mouseSensitivity * Time.deltaTime;
+        mouseY = currentMouseDelta.y * mouseSensitivity * Time.deltaTime;
     }
     void LateUpdate()
     {
