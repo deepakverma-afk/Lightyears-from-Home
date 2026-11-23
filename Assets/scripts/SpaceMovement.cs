@@ -28,7 +28,8 @@ public class SpaceMovement : MonoBehaviour
             verticalInput,
             moveInput.y
         ).normalized;
-        rb.AddForce(movement * thrustPower);
+        Vector3 worldMovement = transform.TransformDirection(movement);
+        rb.AddForce(worldMovement * thrustPower);
     }
     void Update()
     {
