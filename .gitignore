@@ -11,3 +11,6 @@
 *.sln
 *.slnx
 .vs/
+Assets/skybox/Real Stars Skybox/StarSkybox04/CubemapStars.cubemap
+Assets/skybox/Real Stars Skybox/StarSkybox04Named/CubemapStarsNamed.cubemap
+Assets/skybox/Real Stars Skybox/StarSkybox04NamedConstell/CubemapStarsNamedConstellations.cubemap
