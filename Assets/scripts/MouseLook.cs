@@ -35,9 +35,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     void LateUpdate()
     {
-        playerBody.Rotate(Vector3.up * mouseX);
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -85f, 85f);
-        cameraPivot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up, mouseX, Space.Self);
+        playerBody.Rotate(Vector3.right, -mouseY, Space.Self);
     }
 }
