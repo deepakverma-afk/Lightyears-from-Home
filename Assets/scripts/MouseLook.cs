@@ -5,12 +5,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] private Transform playerBody;
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private float mouseSensitivity = 100f;
+    
     [SerializeField] private float smoothTime = 0.05f;
     private Vector2 currentMouseDelta;
     private Vector2 currentMouseDeltaVelocity;
     private float xRotation = 0f;
     private float mouseX;
     private float mouseY;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
