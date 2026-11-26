@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 public class SpaceMovement : MonoBehaviour
 { 
     [SerializeField] private float thrustPower = 10f;
+    [SerializeField] private float brakeStrength = 5f;
     private float verticalInput;
     private Rigidbody rb;
     private PlayerControls controls;
@@ -22,7 +23,12 @@ public class SpaceMovement : MonoBehaviour
         controls.Disable();
     }
     void FixedUpdate()
+    
     {
+        if (Keyboard.current.vKey.isPressed)
+        {
+            rb.AddForce(-rb.linearVelocity * brakeStrength, ForceMode.Acceleration);
+        }
         Vector3 movement = new Vector3(
             moveInput.x,
             verticalInput,
